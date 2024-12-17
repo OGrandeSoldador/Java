@@ -17,7 +17,6 @@ public class Ambience {
         setAmIHere(amIHere);
     }
 
-
     public void setItRaining(Boolean itRaining) {
         isItRaining = itRaining;
     }
@@ -61,7 +60,6 @@ public class Ambience {
     public String getWeatherCondition() {
         return weatherCondition;
     }
-
 
     public void whereIamNow(){
         if (this.getAmIHere() == true) {
