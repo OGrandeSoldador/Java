@@ -1,38 +1,78 @@
 package createobjects;
 
 public class Reading {
-                                                                                String bookTitle;
-    int totalPages;
-    int currentPage;
-    Boolean isOpen;
+   private String bookTitle;
+   private int totalPages;
+   private int currentPage;
+   private Boolean isOpen;
 
-    void openBook() {
-        isOpen = true;
-        currentPage = (int)(Math.random() * (totalPages));
-        System.out.println("Opening book " + bookTitle + " to reading page " + currentPage);
+    public Reading(String bookTitle, int totalPages) {
+        this.setBookTitle(bookTitle);
+        this.setTotalPages(totalPages);
     }
 
-    void closeBook() {
-        isOpen = false;
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+    public void setOpen(Boolean open) {
+        isOpen = open;
+    }
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public String getBookTitle() {
+        return bookTitle;
+    }
+    public int getTotalPages() {
+        return totalPages;
+    }
+    public Boolean getOpen() {
+        return isOpen;
+    }
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void openBook() {
+        setOpen(true);
+        //getCurrentPage() = (int)(Math.random() * (getTotalPages()));
+        System.out.println("Opening book " + getBookTitle() + " to reading page " + getCurrentPage());
+    }
+    public void closeBook() {
+        setOpen(false);
         System.out.println("Closing book");
     }
-    void changecurrentPage(int newCurrentPage) {
-        currentPage = newCurrentPage;
-        System.out.println("Changing page to page " + currentPage);
+    public void changecurrentPage(int newCurrentPage) {
+        setCurrentPage(newCurrentPage);
+        System.out.println("Changing page to page " + getCurrentPage());
     }
-
-    void readBook() {
-        if (!isOpen) {
+    public void readBook() {
+        if (!getOpen()) {
             openBook();
-            System.out.println("Opening book " + bookTitle + " to reading page" + currentPage);
+            System.out.println("Opening book " + getBookTitle() + " to reading page" + getCurrentPage());
         }
         else
         {
-            System.out.println("Reading page " + currentPage);
+            System.out.println("Reading page " + getCurrentPage());
         }
     }
-    void nextPage() {
-        currentPage++;
-        System.out.println("Next page " + currentPage);
+    public void nextPage() {
+        setCurrentPage(getCurrentPage()+ 1);
+        System.out.println("Next page: " + getCurrentPage());
+    }
+
+    public void Read(Boolean niceSpot,int numPagesToRead, int currentPage) {
+        openBook();
+        changecurrentPage(currentPage);
+        while (numPagesToRead > 0) {
+            readBook();
+            nextPage();
+            numPagesToRead--;
+        }
+        closeBook();
     }
 }

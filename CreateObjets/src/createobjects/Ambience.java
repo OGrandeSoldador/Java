@@ -1,36 +1,93 @@
-                                    package createobjects;
+package createobjects;
 
 public class Ambience {
-    String name;
-    int lightIntensity;
-    int temperatureindegrees;
-    String weatherCondition;
-    Boolean isItRaining;
-    String timeOfDay;
-    Boolean amIHere;
+    private String name;
+    private int lightIntensity;
+    private int temperatureindegrees;
+    private String weatherCondition;
+    private Boolean isItRaining;
+    private String timeOfDay;
+    private Boolean amIHere;
 
-    void whereIamNow(){
-        if (this.amIHere == true) {
-            System.out.println("I'm now on the " + this.name);
-            System.out.println("At " + this.timeOfDay);
+    public Ambience(String name, int lightIntensity, int temperatureindegrees, String timeOfDay, Boolean amIHere) {
+        setName(name);
+        setLightIntensity(lightIntensity);
+        setTemperatureindegrees(temperatureindegrees);
+        setTimeOfDay(timeOfDay);
+        setAmIHere(amIHere);
+    }
+
+
+    public void setItRaining(Boolean itRaining) {
+        isItRaining = itRaining;
+    }
+    public void setWeatherCondition(String weatherCondition) {
+        this.weatherCondition = weatherCondition;
+    }
+    public void setTimeOfDay(String timeOfDay) {
+        this.timeOfDay = timeOfDay;
+    }
+    public void setTemperatureindegrees(int temperatureindegrees) {
+        this.temperatureindegrees = temperatureindegrees;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setLightIntensity(int lightIntensity) {
+        this.lightIntensity = lightIntensity;
+    }
+    public void setAmIHere(Boolean amIHere) {
+        this.amIHere = amIHere;
+    }
+
+    public Boolean getAmIHere() {
+        return amIHere;
+    }
+    public Boolean getItRaining() {
+        return isItRaining;
+    }
+    public int getLightIntensity() {
+        return lightIntensity;
+    }
+    public String getName() {
+        return name;
+    }
+    public int getTemperatureindegrees() {
+        return temperatureindegrees;
+    }
+    public String getTimeOfDay() {
+        return timeOfDay;
+    }
+    public String getWeatherCondition() {
+        return weatherCondition;
+    }
+
+
+    public void whereIamNow(){
+        if (this.getAmIHere() == true) {
+            System.out.println("I'm now on the " + this.getName());
+            System.out.println("At " + this.getTimeOfDay());
+        }
+        else{
+            System.out.println("I'm not now on the " + this.getName());
         }
     }
 
-    Boolean itstimetogohome() {
+    public Boolean itstimetogohome() {
         int iwillreturn = 0;
-        if (this.timeOfDay.equals("night") || this.timeOfDay.equals("dawn")) {
+        if (this.getTimeOfDay().equals("night") || this.getTimeOfDay().equals("dawn")) {
             System.out.println("i`m going to my House, because it's " + timeOfDay);
             iwillreturn = 1;
         }
-        if (this.isItRaining == true) {
+        if (this.getItRaining() == true) {
             System.out.println("It's raining");
             iwillreturn = 1;
         }
-        if (this.temperatureindegrees > 25) {
+        if (this.getTemperatureindegrees() > 25) {
             System.out.println("It's too hot");
             iwillreturn = 1;
         }
-        if (this.weatherCondition.equals("sunny") || this.weatherCondition.equals("cloudy")) {
+        if (this.getWeatherCondition().equals("sunny") || this.getWeatherCondition().equals("cloudy")) {
             System.out.println("It's weather on the " + this.name + " is unfarovable");
             iwillreturn = 1;
         }
@@ -40,36 +97,36 @@ public class Ambience {
         return false;
     }
 
-    void goingHome(Boolean isItTime){
+    public void goingHome(Boolean isItTime){
         if (isItTime == true) {
-            this.amIHere = false;
+            setAmIHere(false);
             System.out.println("I'm returning home.");
         }
         else {
-            this.amIHere = true;
+            setAmIHere(true);
             System.out.println("I'm good");
         }
     }
 
-    void ArrivedHome(){
-        if (this.name.equals("Bedroom")) {
-            this.amIHere = true;
+    public void ArrivedHome(){
+        if (this.getName().equals("Bedroom")) {
+            setAmIHere(true);
             System.out.println("I'm at home");
         }
         else {
-            this.amIHere = false;
+            setAmIHere(false);
             System.out.println("I'm not home yet");
         }
     }
 
-    boolean isIdealReadingSpot(){
-        if (this.temperatureindegrees > 25)
+    public boolean isIdealReadingSpot(){
+        if (this.getTemperatureindegrees() > 25)
             return false;
 
-        else if (this.isItRaining == true)
+        else if (this.getItRaining())
             return false;
 
-        else if (this.lightIntensity < 5)
+        else if (this.getLightIntensity() < 5)
             return false;
         else
             System.out.println("It's a ideal spot to read");

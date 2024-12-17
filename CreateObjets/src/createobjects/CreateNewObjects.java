@@ -2,59 +2,24 @@ package createobjects;
 
 public class CreateNewObjects {
     public static void main(String[] args) {
+        Ambience local1 = new Ambience("Bedroom", 8, 24, "any Time", false );
+        Ambience local2 = new Ambience("Yard", 10, 27, "afternoon", true );
 
-        Pen P1 = new Pen();
-        P1.model = "Bic 2.0";
-        P1.color = "Black";
-        P1.tip = 0.5f;
-        P1.charge = 90;
-        P1.uncap();
-        P1.putcap();
-        P1.status();
-        P1.scribble();
+        local1.setWeatherCondition("Sunny");
+        local1.setItRaining(false);
 
-        Reading Book = new Reading();
-        Book.bookTitle = "Jurassic Park";
-        Book.totalPages = 300;
-        Book.isOpen = false;
+        local2.setWeatherCondition("Sunny");
+        local2.setItRaining(true);
 
+        local2.whereIamNow();
+        local2.goingHome(local2.itstimetogohome());
+        local1.ArrivedHome();
+        local2.whereIamNow();
+        local1.whereIamNow();
 
-        Ambience House = new Ambience();
-        House.name = "Bedroom";
-        House.lightIntensity = 8;
-        House.weatherCondition = "favorable";
-        House.temperatureindegrees = 22;
-        House.isItRaining = false;
-        House.timeOfDay = "Any time";
-        House.amIHere = true;
-        House.whereIamNow();
-        House.goingHome(House.itstimetogohome());
-        House.ArrivedHome();
+        Reading book1 = new Reading("Jurassic Park", 522);
 
-        Ambience Street = new Ambience();
-        Street.name = "Street 3";
-        Street.lightIntensity = 2;
-        Street.weatherCondition = "cloudy";
-        Street.temperatureindegrees = 27;
-        Street.isItRaining = true;
-        Street.timeOfDay = "night";
-        Street.amIHere = true;
-        Street.whereIamNow();
-        Street.goingHome(Street.itstimetogohome());
-        Street.ArrivedHome();
-        House.ArrivedHome();
-
-        if(House.isIdealReadingSpot() == true)
-        {
-            Book.openBook();
-            Book.readBook();
-            Book.changecurrentPage(1);
-            Book.nextPage();
-            Book.readBook();
-            Book.closeBook();
-        }
-
-
+        book1.Read(local1.isIdealReadingSpot(),10,1);
 
     }
 }
